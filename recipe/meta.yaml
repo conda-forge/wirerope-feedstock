@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: fa172d09eff7534563f315e38712b5fa3b88a1aa3467b539a7510f2e427a7af4
 
 build:
@@ -16,15 +16,17 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python >=3.6
-    - six >=1.11.0
+    - python >={{ python_min }}
 
 test:
   imports:
     - wirerope
+  requires:
+    - python {{ python_min }}
 
 about:
   home: https://github.com/youknowone/wirerope

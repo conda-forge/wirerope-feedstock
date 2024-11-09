@@ -1,13 +1,13 @@
 {% set name = "wirerope" %}
-{% set version = "0.4.7" %}
+{% set version = "0.4.8" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f3961039218276283c5037da0fa164619def0327595f10892d562a61a8603990
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: fa172d09eff7534563f315e38712b5fa3b88a1aa3467b539a7510f2e427a7af4
 
 build:
   number: 0
@@ -16,15 +16,18 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - six >=1.11.0
 
 test:
   imports:
     - wirerope
+  requires:
+    - python {{ python_min }}
 
 about:
   home: https://github.com/youknowone/wirerope
